@@ -17,7 +17,7 @@ Be sure to have mysql or mariadb installed, then create your database using the 
 Using the -p switch will prompt you for a password  
 
 ### Create a .env file  
-In the root folder of the API, create a file named **.env** and add the following lines (replacing the sample information with your own)
+In the same folder as the app.js file, create a file named **.env** and add the following lines (replacing the sample information with your own)
 
     DB_HOST=localhost
     DB_USER=your_mysql_username
