@@ -1,5 +1,5 @@
 # jwt-server
-A simple API to manage JSON Web Tokens.  
+An API to manage JSON Web Tokens.  
 
 **NOTE:** This JWT API assumes your web application has an auto-timeout function for when a session goes too long without activity. Reauthorization tokens are not used. If a session times out, or when a user logs out, the app should then call the 'kill-token' route which will then invalidate the token.  I created this scheme because I find that reauth tokens present their own security issues.
 
@@ -58,4 +58,26 @@ Once you have created this file, be sure to make it executable, then run the fol
     sudo systemctl enable jwt-server
     sudo systemctl start jwt-server
     
-Running 'enable' will cause it to start when the server is rebooted.
+Running 'enable' will restart the api service when the system is rebooted.
+
+### Creating a proxy_pass to your JWT API service.  
+This example is for NGINX on a Debian-based system, but works in a similar fashion for Apache.  
+
+1. Navigate to '/etc/nginx/sites-available/'  
+2. If you have multiple websites on your server, select the config for the website you wish to use
+3. Below the web-root location entry ( location / ), add the following:   
+
+       location /jwt {
+            rewrite ^/jwt(.*) $1 break;
+            proxy_pass "http://localhost:8069";  # Use the same port number as assigned in app.js and jwt-server.service
+       }
+       
+4. To test the configuration, enter the following at the command line:
+
+       sudo nginx -t
+       
+5. If no errors are reported, then re-start the web server from the command line.
+
+       sudo systemctl restart mginx
+
+Your JWT Server is now functional!
