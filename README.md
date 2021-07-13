@@ -80,4 +80,6 @@ This example is for NGINX on a Debian-based system, but works in a similar fashi
 
        sudo systemctl restart mginx
 
-Your JWT Server is now functional!
+Your JWT Server is now functional! Now for the fun part...  
+
+# Usage
