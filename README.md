@@ -1,2 +1,2 @@
 # jwt-server
-a JSON Web Token Server
+Simple api to manage jsonwebtokens

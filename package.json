@@ -1,0 +1,19 @@
+{
+  "name": "secure-login-api",
+  "version": "1.0.0",
+  "description": "A server to manage JSON Webtokens",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charles Seale",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.3.0",
+    "mysql": "^2.18.1"
+  }
+}
