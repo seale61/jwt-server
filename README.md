@@ -1,7 +1,11 @@
 # jwt-server
 An API to manage JSON Web Tokens.  
 
-**NOTE:** This JWT API assumes your web application has an auto-timeout function for when a session goes too long without activity. Reauthorization tokens are not used. If a session times out, or when a user logs out, the app should then call the 'kill-token' route which will then invalidate the token.  I created this scheme because I find that reauth tokens present their own security issues.
+**NOTE:** This JWT API assumes your web application has an auto-timeout function for when a session goes too long without activity. Reauthorization tokens are not used. If a session times out, or when a user logs out, the app should then call the 'kill-token' route which will then invalidate the token.  I created this scheme because I find that reauth tokens present their own security issues.  
+
+Jwt-server is basically an API for your API. It creates a token, stores your user's credentials and token, checks to make sure the token is still valid when protected routes are accessed, and it invalidates the token when the user logs out or the session times out. This alliviates the need for a reauth token and provides a seperate record of tokens assigned, used, and invalidated, along with the user information of the user to which it was assigned. 
+
+
 
 ## Installation
 Run the following commands
@@ -53,7 +57,7 @@ The following example is for servers using **systemd** and **nginx**. Navigate t
     [Install]
     WantedBy=multi-user.target
 
-Once you have created this file, be sure to make it executable, then run the following commands:
+Once you have created this file, be sure to make it executable, and then run the following commands:
 
     sudo systemctl enable jwt-server
     sudo systemctl start jwt-server
